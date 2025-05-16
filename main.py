@@ -156,7 +156,7 @@ async def get_profile(steamid: str = Query(...)):
     async with httpx.AsyncClient() as client:
         #response = await client.get(url, params=params)
         profile, games = await gather_player_stats(steamid)
-        
+        pprint(profile, games)
     
         # AXE 1 – Progression Style
         high_completion_games = [g for g in games if g["completion_percent"] >= 80.0]
