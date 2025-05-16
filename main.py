@@ -152,8 +152,8 @@ async def get_datas(steamid: str = Query(...)):
         return summary,details
     
 @app.get("/steam/profile")
-async def get_profile(steamid: str = Query(...)):
-    async with httpx.AsyncClient() as client:
+def get_profile(steamid: str = Query(...)):
+    with httpx.AsyncClient() as client:
         #response = await client.get(url, params=params)
         profile, games = gather_player_stats(steamid)
         
